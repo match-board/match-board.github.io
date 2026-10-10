@@ -1,0 +1,140 @@
+---
+import Layout from '../layouts/Layout.astro';
+import Navbar from '../components/Navbar.astro';
+import Scoreboard from '../components/Scoreboard';
+---
+
+<Layout>
+  <div class="min-h-screen flex flex-col bg-[#FBFDFB] dark:bg-[#0B0F12] text-slate-800 dark:text-slate-100 transition-colors duration-300">
+    <!-- Sticky Responsive Navbar -->
+    <Navbar />
+
+    <!-- Semantic Breadcrumb Navigation (Compact & Non-Intrusive) -->
+    <nav
+      aria-label="Breadcrumb"
+      class="w-full max-w-7xl mx-auto px-3 sm:px-6 pt-2 pb-0.5 text-[11px] font-mono text-slate-400 dark:text-slate-500 flex items-center justify-between"
+    >
+      <ol
+        itemscope
+        itemtype="https://schema.org/BreadcrumbList"
+        class="flex items-center gap-1.5"
+      >
+        <li
+          itemprop="itemListElement"
+          itemscope
+          itemtype="https://schema.org/ListItem"
+          class="flex items-center gap-1.5"
+        >
+          <a
+            itemprop="item"
+            href="https://match-board.github.io/"
+            class="hover:text-[#287A74] dark:hover:text-[#AEEED3] transition-colors"
+          >
+            <span itemprop="name">Home</span>
+          </a>
+          <meta itemprop="position" content="1" />
+          <span aria-hidden="true">/</span>
+        </li>
+        <li
+          itemprop="itemListElement"
+          itemscope
+          itemtype="https://schema.org/ListItem"
+          aria-current="page"
+          class="text-[#287A74] dark:text-[#AEEED3] font-semibold"
+        >
+          <a itemprop="item" href="https://match-board.github.io/#scoreboard">
+            <span itemprop="name">Live Scoreboard &amp; OBS Overlay</span>
+          </a>
+          <meta itemprop="position" content="2" />
+        </li>
+      </ol>
+
+      <span class="hidden sm:inline text-[10px] uppercase tracking-widest opacity-75">
+        100% Client-Side • Zero-Server
+      </span>
+    </nav>
+
+    <!-- Primary Main Landmark & Semantic H1 for Search Engines / Screen Readers -->
+    <main id="main-scoreboard" class="flex-1 flex flex-col items-center justify-center w-full">
+      <h1 class="sr-only">
+        MatchBoard — Free Zero-Server Live Digital Sports Scoreboard &amp; OBS Broadcast Chroma-Key Overlay
+      </h1>
+
+      <div id="scoreboard" class="w-full">
+        <Scoreboard client:load />
+      </div>
+
+      <!-- Below-the-Fold Semantic SEO & Documentation Section -->
+      <section
+        aria-labelledby="seo-features-heading"
+        class="w-full max-w-7xl mx-auto px-4 sm:px-6 py-10 mt-4 border-t border-slate-200/70 dark:border-slate-800/70"
+      >
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+          <article class="p-5 rounded-2xl glass-panel space-y-2">
+            <h2 id="seo-features-heading" class="text-sm font-bold uppercase tracking-wider text-[#287A74] dark:text-[#AEEED3] font-stadium">
+              Zero-Server Live URL Sync
+            </h2>
+            <p class="text-xs text-slate-600 dark:text-slate-400 leading-relaxed">
+              Every point, period update, and team color is automatically compressed into the URL hash (<code>#data=...</code>) via LZ-String. Share live match links instantly on WhatsApp, Telegram, or Discord without creating an account.
+            </p>
+          </article>
+
+          <article class="p-5 rounded-2xl glass-panel space-y-2">
+            <h2 class="text-sm font-bold uppercase tracking-wider text-[#287A74] dark:text-[#AEEED3] font-stadium">
+              OBS Studio Chroma-Key Overlay
+            </h2>
+            <p class="text-xs text-slate-600 dark:text-slate-400 leading-relaxed">
+              Switch into <strong>OBS Broadcast Mode</strong> to transform the scoreboard into a professional lower-third broadcast banner backed by pure <code>#00FF00</code> chroma-key green for effortless sports live streaming.
+            </p>
+          </article>
+
+          <article class="p-5 rounded-2xl glass-panel space-y-2">
+            <h2 class="text-sm font-bold uppercase tracking-wider text-[#287A74] dark:text-[#AEEED3] font-stadium">
+              Unlimited Offline Teams &amp; Logos
+            </h2>
+            <p class="text-xs text-slate-600 dark:text-slate-400 leading-relaxed">
+              Upload custom SVG, PNG, or WebP team logos—automatically downscaled via HTML5 Canvas—and store unlimited team rosters and match histories directly in your browser's LocalStorage.
+            </p>
+          </article>
+        </div>
+      </section>
+    </main>
+
+    <!-- Clean Stadium Footer -->
+    <footer class="py-5 border-t border-slate-200/80 dark:border-slate-800/80 text-center text-xs text-slate-500 dark:text-slate-400">
+      <div class="max-w-7xl mx-auto px-4 flex flex-col sm:flex-row items-center justify-between gap-2">
+        <div class="flex items-center gap-2">
+          <span class="font-extrabold text-slate-700 dark:text-slate-300 font-stadium">MATCHBOARD</span>
+          <span aria-hidden="true">•</span>
+          <span>100% Zero-Server Live Scoreboard</span>
+        </div>
+        <div class="flex items-center gap-4">
+          <a
+            href="/sitemap.xml"
+            class="hover:text-[#287A74] dark:hover:text-[#AEEED3] transition-colors"
+          >
+            Sitemap
+          </a>
+          <span aria-hidden="true">•</span>
+          <a
+            href="https://buymeacoffee.com/kisharadilz"
+            target="_blank"
+            rel="noopener noreferrer"
+            class="hover:text-[#287A74] dark:hover:text-[#AEEED3] font-medium transition-colors"
+          >
+            Support Developer ☕
+          </a>
+          <span aria-hidden="true">•</span>
+          <a
+            href="https://github.com/match-board/match-board.github.io"
+            target="_blank"
+            rel="noopener noreferrer"
+            class="hover:text-[#287A74] dark:hover:text-[#AEEED3] transition-colors"
+          >
+            GitHub
+          </a>
+        </div>
+      </div>
+    </footer>
+  </div>
+</Layout>

@@ -1,0 +1,17 @@
+{
+  "name": "MatchBoard | Premium Zero-Server Live Scoreboard",
+  "short_name": "MatchBoard",
+  "description": "100% client-side, zero-server digital scoreboard with OBS broadcast chroma-key overlay, rolling odometer numbers, and live URL-hash link sharing.",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#0B0F12",
+  "theme_color": "#287A74",
+  "icons": [
+    {
+      "src": "/favicon.svg",
+      "sizes": "any",
+      "type": "image/svg+xml",
+      "purpose": "any maskable"
+    }
+  ]
+}

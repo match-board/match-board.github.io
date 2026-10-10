@@ -1,0 +1,234 @@
+---
+import '../styles/global.css';
+
+interface Props {
+  title?: string;
+  description?: string;
+  ogImage?: string;
+  noindex?: boolean;
+}
+
+const {
+  title = "MatchBoard | Free Zero-Server Live Scoreboard & OBS Overlay",
+  description = "A 100% client-side, zero-server digital sports scoreboard with physical rolling numbers, OBS Studio #00FF00 chroma-key overlay, instant WhatsApp URL link sharing, and unlimited offline storage.",
+  ogImage = "https://match-board.github.io/og-image.png",
+  noindex = false,
+} = Astro.props;
+
+const siteUrl = "https://match-board.github.io/";
+const canonicalURL = new URL(Astro.url.pathname, Astro.site || siteUrl).toString();
+const ogImageAlt = "MatchBoard Live Digital Scoreboard showing Home Team 24 vs Guest Team 21 with OBS Broadcast Overlay support";
+
+const jsonLd = {
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "WebSite",
+      "@id": "https://match-board.github.io/#website",
+      "url": "https://match-board.github.io/",
+      "name": "MatchBoard",
+      "description": description,
+      "inLanguage": ["en", "es", "fr", "pt", "de"],
+      "publisher": {
+        "@type": "Person",
+        "name": "Kishara Dilz",
+        "url": "https://buymeacoffee.com/kisharadilz"
+      }
+    },
+    {
+      "@type": ["WebApplication", "SoftwareApplication"],
+      "@id": "https://match-board.github.io/#app",
+      "name": "MatchBoard | Premium Zero-Server Live Scoreboard",
+      "url": "https://match-board.github.io/",
+      "description": description,
+      "applicationCategory": "SportsApplication, MultimediaApplication, UtilityApplication",
+      "operatingSystem": "All",
+      "browserRequirements": "Requires JavaScript and HTML5 localStorage",
+      "isAccessibleForFree": true,
+      "inLanguage": ["en", "es", "fr", "pt", "de"],
+      "image": ogImage,
+      "screenshot": ogImage,
+      "offers": {
+        "@type": "Offer",
+        "price": "0.00",
+        "priceCurrency": "USD",
+        "availability": "https://schema.org/InStock"
+      },
+      "author": {
+        "@type": "Person",
+        "name": "Kishara Dilz",
+        "url": "https://buymeacoffee.com/kisharadilz"
+      },
+      "featureList": [
+        "Zero-Server 100% Client-Side Digital Scoreboard",
+        "Framer Motion physical rolling number odometer animations",
+        "Ergonomic touch targets spanning over 60% viewport height",
+        "OBS Studio Chroma-Key #00FF00 Broadcast Lower-Third Overlay Mode",
+        "LZ-String compressed URL-hash live score sharing (#data=...)",
+        "Offline browser LocalStorage for unlimited saved matches and team rosters",
+        "Multi-language interface (English, Español, Français, Português, Deutsch)",
+        "Custom team hex colors, Canvas logo downscaling, and live CSS injection"
+      ]
+    },
+    {
+      "@type": "BreadcrumbList",
+      "@id": "https://match-board.github.io/#breadcrumb",
+      "itemListElement": [
+        {
+          "@type": "ListItem",
+          "position": 1,
+          "name": "Home",
+          "item": "https://match-board.github.io/"
+        },
+        {
+          "@type": "ListItem",
+          "position": 2,
+          "name": "Live Digital Scoreboard & OBS Overlay",
+          "item": "https://match-board.github.io/#scoreboard"
+        }
+      ]
+    },
+    {
+      "@type": "FAQPage",
+      "@id": "https://match-board.github.io/#faq",
+      "mainEntity": [
+        {
+          "@type": "Question",
+          "name": "How does MatchBoard share live scores without a server?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "MatchBoard compresses the entire scoreboard state—including team names, scores, period counters, clock, and custom hex colors—directly into the URL hash (#data=...) using LZ-String compression. Clicking 'Copy Live Link' lets you share the exact live match state on WhatsApp, Telegram, or Discord."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "How do I use MatchBoard as an OBS Studio broadcast scoreboard overlay?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Click the 'OBS Mode' button on the scoreboard toolbar to activate the broadcast lower-third layout with a pure #00FF00 chroma-key green background. In OBS Studio, add a Browser Source or Window Capture and apply a Chroma Key filter to remove the green background."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Can I upload custom team logos and save unlimited matches offline?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Yes. MatchBoard uses the HTML5 FileReader and Canvas APIs to compress uploaded SVG, PNG, or WebP team logos to 128x128px client-side, storing unlimited team rosters and match histories directly in your browser's LocalStorage."
+          }
+        }
+      ]
+    }
+  ]
+};
+---
+
+<!doctype html>
+<html lang="en" class="scroll-smooth">
+  <head>
+    <!-- Google tag (gtag.js) -->
+    <script is:inline async src="https://www.googletagmanager.com/gtag/js?id=G-MWSJVW682L"></script>
+    <script is:inline>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+
+      gtag('config', 'G-MWSJVW682L');
+    </script>
+
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, viewport-fit=cover" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <link rel="apple-touch-icon" href="/favicon.svg" />
+    <link rel="manifest" href="/site.webmanifest" />
+    <link rel="canonical" href={canonicalURL} />
+    <meta name="generator" content={Astro.generator} />
+
+    <!-- International SEO Hreflang Alternates -->
+    <link rel="alternate" hreflang="en" href="https://match-board.github.io/" />
+    <link rel="alternate" hreflang="es" href="https://match-board.github.io/" />
+    <link rel="alternate" hreflang="fr" href="https://match-board.github.io/" />
+    <link rel="alternate" hreflang="pt" href="https://match-board.github.io/" />
+    <link rel="alternate" hreflang="de" href="https://match-board.github.io/" />
+    <link rel="alternate" hreflang="x-default" href="https://match-board.github.io/" />
+
+    <!-- Search Engine Crawler Directives -->
+    <meta
+      name="robots"
+      content={noindex ? "noindex, follow" : "index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1"}
+    />
+
+    <!-- Google Fonts Preconnect for Optimal LCP -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Chakra+Petch:wght@600;700;800&family=Inter:wght@400;500;600;700;800&family=Oswald:wght@500;600;700&display=swap" rel="stylesheet" />
+
+    <!-- Primary Meta Tags -->
+    <title>{title}</title>
+    <meta name="title" content={title} />
+    <meta name="description" content={description} />
+    <meta name="keywords" content="live scoreboard, digital scoreboard, online scoreboard, sports scoreboard, obs scoreboard overlay, zero server scoreboard, basketball scoreboard, volleyball scoreboard, tennis scoreboard, soccer scoreboard, free stream overlay" />
+    <meta name="author" content="Kishara Dilz" />
+    <meta name="theme-color" content="#287A74" media="(prefers-color-scheme: light)" />
+    <meta name="theme-color" content="#0B0F12" media="(prefers-color-scheme: dark)" />
+
+    <!-- Open Graph / Facebook / WhatsApp -->
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content={canonicalURL} />
+    <meta property="og:title" content={title} />
+    <meta property="og:description" content={description} />
+    <meta property="og:site_name" content="MatchBoard" />
+    <meta property="og:image" content={ogImage} />
+    <meta property="og:image:secure_url" content={ogImage} />
+    <meta property="og:image:type" content="image/png" />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
+    <meta property="og:image:alt" content={ogImageAlt} />
+    <meta property="og:locale" content="en_US" />
+    <meta property="og:locale:alternate" content="es_ES" />
+    <meta property="og:locale:alternate" content="fr_FR" />
+    <meta property="og:locale:alternate" content="pt_PT" />
+    <meta property="og:locale:alternate" content="de_DE" />
+
+    <!-- Twitter / X Card (Standard name="..." attributes) -->
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:url" content={canonicalURL} />
+    <meta name="twitter:title" content={title} />
+    <meta name="twitter:description" content={description} />
+    <meta name="twitter:image" content={ogImage} />
+    <meta name="twitter:image:alt" content={ogImageAlt} />
+
+    <!-- Mobile Web App & PWA readiness -->
+    <meta name="mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+    <meta name="apple-mobile-web-app-title" content="MatchBoard" />
+
+    <!-- Structured Data (JSON-LD @graph) -->
+    <script type="application/ld+json" set:html={JSON.stringify(jsonLd)} />
+
+    <!-- Zero-FOUC Theme Initialization Script -->
+    <script is:inline>
+      (function() {
+        try {
+          const stored = localStorage.getItem('theme');
+          const isDark = stored === 'dark' || (!stored && window.matchMedia('(prefers-color-scheme: dark)').matches);
+          if (isDark) {
+            document.documentElement.classList.add('dark');
+          } else {
+            document.documentElement.classList.remove('dark');
+          }
+        } catch (_) {}
+      })();
+    </script>
+  </head>
+  <body class="selection:bg-[#AEEED3]/40 selection:text-[#287A74] dark:selection:bg-[#287A74]/50 dark:selection:text-[#AEEED3]">
+    <!-- Keyboard Accessibility Skip Link -->
+    <a
+      href="#main-scoreboard"
+      class="sr-only focus:not-sr-only focus:fixed focus:top-3 focus:left-3 focus:z-50 focus:px-4 focus:py-2 focus:rounded-xl focus:bg-[#287A74] focus:text-white focus:font-bold focus:text-xs focus:shadow-xl"
+    >
+      Skip to Live Scoreboard
+    </a>
+    <slot />
+  </body>
+</html>

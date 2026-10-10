@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://match-board.github.io/sitemap.xml

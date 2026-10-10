@@ -1,0 +1,73 @@
+---
+import ThemeToggle from './ThemeToggle';
+import LanguageSelector from './LanguageSelector';
+---
+
+<header class="sticky top-0 z-40 w-full transition-colors duration-300 backdrop-blur-xl bg-white/85 dark:bg-[#0B0F12]/85 border-b border-slate-200/80 dark:border-slate-800/80">
+  <nav aria-label="Primary Navigation" class="max-w-7xl mx-auto px-3 sm:px-4 lg:px-6 h-14 sm:h-16 flex items-center justify-between gap-2">
+    <!-- Brand / Logo Area -->
+    <a href="/" class="group flex items-center gap-2.5 sm:gap-3 transition-transform active:scale-95" aria-label="MatchBoard — Zero-Server Live Scoreboard Home">
+      <div class="relative flex items-center justify-center w-8 h-8 sm:w-9 sm:h-9 rounded-xl bg-gradient-to-br from-[#287A74] to-[#55A9A0] dark:from-[#287A74] dark:to-[#AEEED3] p-0.5 shadow-md group-hover:shadow-glow-mint transition-all">
+        <div class="w-full h-full bg-white dark:bg-[#0B0F12] rounded-[10px] flex items-center justify-center">
+          <svg aria-hidden="true" class="w-4 h-4 sm:w-5 sm:h-5 text-[#287A74] dark:text-[#AEEED3] transition-colors" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+            <rect x="2" y="3" width="20" height="18" rx="3"></rect>
+            <path d="M12 3v18"></path>
+            <path d="M2 12h20"></path>
+          </svg>
+        </div>
+      </div>
+
+      <div class="flex flex-col">
+        <div class="flex items-center gap-1.5">
+          <span class="font-extrabold tracking-tight text-base sm:text-lg text-slate-900 dark:text-white font-stadium">
+            MATCH<span class="text-[#287A74] dark:text-[#AEEED3]">BOARD</span>
+          </span>
+          <span class="text-[9px] font-mono px-1.5 py-0.2 rounded-full font-bold uppercase tracking-wider bg-[#FFF8B0] text-[#287A74] dark:bg-[#AEEED3]/15 dark:text-[#AEEED3] border border-[#287A74]/15 dark:border-[#AEEED3]/25">
+            LIVE
+          </span>
+        </div>
+        <span class="hidden md:block text-[10px] font-medium text-slate-500 dark:text-slate-400 -mt-1 tracking-wider uppercase">
+          Zero-Server Scoreboard
+        </span>
+      </div>
+    </a>
+
+    <!-- Action Controls (Language, Theme, Support) -->
+    <div class="flex items-center gap-1.5 sm:gap-2 md:gap-3">
+      <!-- Language Selector React Island -->
+      <LanguageSelector client:load />
+
+      <!-- Theme Switcher React Island -->
+      <ThemeToggle client:load />
+
+      <!-- Support the Developer CTA -->
+      <a
+        href="https://buymeacoffee.com/kisharadilz"
+        target="_blank"
+        rel="noopener noreferrer"
+        aria-label="Support the Developer on Buy Me a Coffee"
+        title="Support the Developer on Buy Me a Coffee"
+        class="group relative inline-flex items-center justify-center gap-2 h-10 px-2.5 sm:px-3 md:px-4 rounded-xl font-medium text-xs transition-all duration-300
+          bg-gradient-to-r from-[#287A74] to-[#55A9A0] text-white hover:brightness-110 shadow-sm hover:shadow-luxury active:scale-95
+          dark:from-[#287A74] dark:to-[#55A9A0] dark:text-white dark:hover:shadow-glow-teal"
+      >
+        <!-- Coffee Cup Icon -->
+        <svg aria-hidden="true" class="w-4 h-4 text-[#FFF8B0] dark:text-[#AEEED3] group-hover:scale-110 transition-transform" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M17 8h1a4 4 0 1 1 0 8h-1"></path>
+          <path d="M3 8h14v9a4 4 0 0 1-4 4H7a4 4 0 0 1-4-4Z"></path>
+          <line x1="6" y1="2" x2="6" y2="4"></line>
+          <line x1="10" y1="2" x2="10" y2="4"></line>
+          <line x1="14" y1="2" x2="14" y2="4"></line>
+        </svg>
+
+        <!-- Desktop label only; strictly hidden on mobile/tablet per design system -->
+        <span class="hidden lg:inline font-semibold tracking-wide">
+          Support Developer
+        </span>
+        <span class="hidden md:inline lg:hidden font-semibold tracking-wide">
+          Support
+        </span>
+      </a>
+    </div>
+  </nav>
+</header>

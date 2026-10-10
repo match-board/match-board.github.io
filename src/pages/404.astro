@@ -1,0 +1,38 @@
+---
+import Layout from '../layouts/Layout.astro';
+import Navbar from '../components/Navbar.astro';
+---
+
+<Layout title="MatchBoard | Page Not Found" noindex={true}>
+  <div class="min-h-screen flex flex-col bg-[#FBFDFB] dark:bg-[#0B0F12] text-slate-800 dark:text-slate-100">
+    <Navbar />
+
+    <main id="main-scoreboard" class="flex-1 flex flex-col items-center justify-center p-6 text-center">
+      <div class="max-w-md w-full p-8 rounded-3xl glass-panel space-y-5">
+        <div class="font-stadium font-black text-7xl text-[#287A74] dark:text-[#AEEED3]">
+          404
+        </div>
+        <h1 class="text-xl font-bold text-slate-900 dark:text-white">
+          Out of Bounds!
+        </h1>
+        <p class="text-xs sm:text-sm text-slate-500 dark:text-slate-400">
+          The page you are looking for doesn't exist. Redirecting you back to the live stadium scoreboard...
+        </p>
+        <a
+          id="back-home-link"
+          href="/"
+          class="inline-flex items-center justify-center px-6 py-3 rounded-xl font-bold text-xs uppercase tracking-wider bg-[#287A74] text-white dark:bg-[#AEEED3] dark:text-[#0B0F12] hover:opacity-90 transition-opacity shadow-md"
+        >
+          Return to MatchBoard
+        </a>
+      </div>
+    </main>
+  </div>
+
+  <script is:inline>
+    // Preserve any #data=... hash if user hit a subpath by mistake
+    if (window.location.hash && window.location.hash.includes('data=')) {
+      window.location.replace('/' + window.location.hash);
+    }
+  </script>
+</Layout>

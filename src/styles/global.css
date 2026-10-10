@@ -1,0 +1,59 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --color-deep-teal: #287A74;
+    --color-muted-teal: #55A9A0;
+    --color-mint-green: #AEEED3;
+    --color-pale-yellow: #FFF8B0;
+  }
+
+  html {
+    scroll-behavior: smooth;
+    font-feature-settings: "cv02", "cv03", "cv04", "cv11";
+  }
+
+  body {
+    @apply antialiased min-h-screen text-slate-800 bg-[#FBFDFB] transition-colors duration-300;
+  }
+
+  html.dark body {
+    @apply text-slate-100 bg-[#0B0F12];
+  }
+}
+
+/* Stadium LED / Score Display Typography */
+.font-stadium {
+  font-family: 'Chakra Petch', 'Oswald', system-ui, sans-serif;
+  font-variant-numeric: tabular-nums lining-nums;
+}
+
+/* Glassmorphism utility */
+.glass-panel {
+  @apply backdrop-blur-md bg-white/75 border border-slate-200/80 shadow-sm transition-all;
+}
+
+html.dark .glass-panel {
+  @apply bg-[#131A20]/80 border-slate-800/80 shadow-lg;
+}
+
+/* Custom subtle scrollbars */
+::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+::-webkit-scrollbar-thumb {
+  background: rgba(85, 169, 160, 0.3);
+  border-radius: 9999px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: rgba(40, 122, 116, 0.6);
+}
