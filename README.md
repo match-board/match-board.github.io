@@ -1,7 +1,7 @@
 # MatchBoard | Premium Zero-Server Live Scoreboard
 
 **Live URL:** [https://match-board.github.io](https://match-board.github.io)  
-**Support Developer:** [Buy Me a Coffee](https://buymeacoffee.com/kisharadilz)
+**Support Developer:** [Ko-fi](https://ko-fi.com/kishara)
 
 A **100% client-side, zero-server digital scoreboard** built with **Astro**, **React Islands**, **Framer Motion**, and **Tailwind CSS**. MatchBoard unlocks broadcast-level features for free, utilizing `lz-string` URL-hash state compression for real-time link sharing and `LocalStorage` for unlimited saved matches and team rosters.
 
@@ -63,4 +63,4 @@ npm run preview
 ## 💖 Support the Developer
 
 If MatchBoard helps power your tournaments, streams, or local games, consider supporting the project:  
-👉 **[https://buymeacoffee.com/kisharadilz](https://buymeacoffee.com/kisharadilz)**
+👉 **[https://ko-fi.com/kishara](https://ko-fi.com/kishara)**
